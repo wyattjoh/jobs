@@ -8,8 +8,7 @@
 
 ## <a name="pkg-overview">Overview</a>
 Package jobs is a simple implementation of a job queue using redis's powerful
-[`RPOPLPUSH`](<a href="https://redis.io/commands/rpoplpush">https://redis.io/commands/rpoplpush</a>) command to ensure reliable
-completion of jobs.
+RPOPLPUSH command to ensure reliable completion of jobs.
 
 Currently not implemented but planned is functions to access the failed list
 and a way to mark a job as failed and to stop retrying.
@@ -71,7 +70,7 @@ var (
 ```
 
 
-## <a name="Pull">func</a> [Pull](/src/target/jobs.go?s=5019:5127#L175)
+## <a name="Pull">func</a> [Pull](/src/target/jobs.go?s=4975:5083#L174)
 ``` go
 func Pull(ctx context.Context, con redis.Conn, name string, work func(context.Context, Message) error) error
 ```
@@ -84,7 +83,7 @@ MaxAttempts times at which point it will be placed into the Failed list.
 
 
 
-## <a name="Push">func</a> [Push](/src/target/jobs.go?s=1871:1967#L59)
+## <a name="Push">func</a> [Push](/src/target/jobs.go?s=1827:1923#L58)
 ``` go
 func Push(ctx context.Context, con redis.Conn, name string, payload interface{}) (string, error)
 ```
@@ -95,7 +94,7 @@ will return the Message ID for tracing.
 
 
 
-## <a name="JobStats">type</a> [JobStats](/src/target/jobs.go?s=6786:6858#L232)
+## <a name="JobStats">type</a> [JobStats](/src/target/jobs.go?s=6742:6814#L231)
 ``` go
 type JobStats struct {
     Processing int
@@ -111,7 +110,7 @@ JobStats contains the statistics for the current job name.
 
 
 
-### <a name="Stats">func</a> [Stats](/src/target/jobs.go?s=6912:6991#L239)
+### <a name="Stats">func</a> [Stats](/src/target/jobs.go?s=6868:6947#L238)
 ``` go
 func Stats(ctx context.Context, con redis.Conn, name string) (*JobStats, error)
 ```
@@ -121,7 +120,7 @@ Stats returns the JobStats for a given job name.
 
 
 
-## <a name="Message">type</a> [Message](/src/target/jobs.go?s=644:757#L16)
+## <a name="Message">type</a> [Message](/src/target/jobs.go?s=600:713#L15)
 ``` go
 type Message struct {
     ID       string
@@ -141,7 +140,7 @@ Message is used to encapsulate the job's data.s
 
 
 
-### <a name="Message.Unmarshal">func</a> (Message) [Unmarshal](/src/target/jobs.go?s=811:860#L24)
+### <a name="Message.Unmarshal">func</a> (Message) [Unmarshal](/src/target/jobs.go?s=767:816#L23)
 ``` go
 func (m Message) Unmarshal(dst interface{}) error
 ```

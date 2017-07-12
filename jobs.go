@@ -1,6 +1,5 @@
 // Package jobs is a simple implementation of a job queue using redis's powerful
-// [`RPOPLPUSH`](https://redis.io/commands/rpoplpush) command to ensure reliable
-// completion of jobs.
+// RPOPLPUSH command to ensure reliable completion of jobs.
 //
 // Currently not implemented but planned is functions to access the failed list
 // and a way to mark a job as failed and to stop retrying.
